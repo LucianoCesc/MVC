@@ -17,14 +17,14 @@ public class InscripcionDAO {
 		int max = 0;
 		//Query para obtener una secuencia y asignar un id. La funcion MAX solo obtiene el valor de id_inscripcion
 		//y le suma 1, con eso hacemos el incremento
-		String consultaProximoId = " SELECT MAX(id_inscripcion)+1 FROM DESAFIO.inscripcion ";
+		String consultaProximoId = " SELECT MAX(id_inscripcion)+1 FROM inscripcion ";
 		//Query que insertara el valor
-		String insertarInscripcion = " INSERT INTO DESAFIO.inscripcion("
+		String insertarInscripcion = " INSERT INTO inscripcion("
 				                   + " id_inscripcion, nombre, telefono, id_curso, id_forma_pago )"
 				                   + " VALUES (?,?,?,?,?) ";
 		//conexion a la base de datos y ejecucion de la sentencia
 				Class.forName("oracle.jdbc.driver.OracleDriver");
-				Connection  conexion = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:XE","SYSTEM","chotokan");
+				Connection  conexion = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:XE","conexion","usuario");
 		try(
 				PreparedStatement stmt1 = conexion.prepareStatement(consultaProximoId);
 				PreparedStatement stmt2 = conexion.prepareStatement(insertarInscripcion);
@@ -57,7 +57,7 @@ public List<InscripcionDTO> obtieneInscripciones() throws SQLException, ClassNot
 		
 		//creamos la consulta a la base de datos
 		String consultaSql = " SELECT * " 
-				   		   + " FROM DESAFIO.inscripcion ";
+				   		   + " FROM inscripcion ";
 		
 		//conexion a la base de datos y ejecucion de la sentencia
 		Class.forName("oracle.jdbc.driver.OracleDriver");

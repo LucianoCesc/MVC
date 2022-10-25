@@ -21,7 +21,7 @@ public class FormaDePagoDAO {
 		
 		//creamos la consulta a la base de datos
 		String consultaSql = " SELECT id_forma_pago, descripcion, recarga " 
-				   		   + " FROM DESAFIO.forma_pago ";
+				   		   + " FROM forma_pago ";
 		
 		//conexion a la base de datos y ejecucion de la sentencia
 		Class.forName("oracle.jdbc.driver.OracleDriver");
